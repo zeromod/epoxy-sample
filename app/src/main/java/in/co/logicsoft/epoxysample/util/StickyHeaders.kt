@@ -1,13 +1,15 @@
 package `in`.co.logicsoft.epoxysample.util
 
-import `in`.co.logicsoft.epoxysample.ListHeaderBindingModel_
 import android.graphics.Canvas
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.epoxy.EpoxyController
 
-class StickyHeaders constructor(private val epoxyController: EpoxyController) : RecyclerView.ItemDecoration() {
+class StickyHeaders constructor(
+    private val epoxyController: EpoxyController,
+    private val headerClass: Class<*>
+) : RecyclerView.ItemDecoration() {
     private var stickyHeaderHeight: Int = 0
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
@@ -34,7 +36,7 @@ class StickyHeaders constructor(private val epoxyController: EpoxyController) : 
     private fun isHeader(itemPosition: Int): Boolean {
         if (itemPosition != RecyclerView.NO_POSITION) {
             val model = epoxyController.adapter.getModelAtPosition(itemPosition)
-            return model is ListHeaderBindingModel_
+            return model.javaClass == headerClass
         }
         return false
     }

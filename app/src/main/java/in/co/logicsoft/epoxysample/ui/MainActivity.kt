@@ -1,5 +1,6 @@
 package `in`.co.logicsoft.epoxysample.ui
 
+import `in`.co.logicsoft.epoxysample.ListHeaderBindingModel_
 import `in`.co.logicsoft.epoxysample.R
 import `in`.co.logicsoft.epoxysample.epoxy.SampleController
 import `in`.co.logicsoft.epoxysample.util.StickyHeaders
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecycler() {
         sample_list.adapter = controller.adapter
-        sample_list.addItemDecoration(StickyHeaders(controller))
+        sample_list.addItemDecoration(StickyHeaders(controller, ListHeaderBindingModel_::class.java))
     }
 
     private fun subscribeUI() {
