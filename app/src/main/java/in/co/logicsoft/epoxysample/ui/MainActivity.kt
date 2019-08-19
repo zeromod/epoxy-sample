@@ -37,8 +37,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun subscribeUI() {
+        var items = emptyList<String>()
+        var headers = emptyList<String>()
         viewModel.item.observe(this, Observer {
-            controller.setData(it, listOf("Header 1", "Header 2"))
+            items = it
+            controller.setData(items, headers)
+        })
+        viewModel.header.observe(this, Observer {
+            headers = it
+            controller.setData(items, headers)
         })
 
         viewModel.toastMessage.observe(this, Observer {
