@@ -33,14 +33,6 @@ class StickyHeaders constructor(
         drawHeader(c, currentHeader)
     }
 
-    private fun isHeader(itemPosition: Int): Boolean {
-        if (itemPosition != RecyclerView.NO_POSITION) {
-            val model = epoxyController.adapter.getModelAtPosition(itemPosition)
-            return model.javaClass == headerClass
-        }
-        return false
-    }
-
     private fun getHeaderPositionForItem(position: Int): Int {
         var headerPosition = 0
         var itemPosition = position
@@ -112,6 +104,14 @@ class StickyHeaders constructor(
             }
         }
         return childInContact
+    }
+
+    private fun isHeader(itemPosition: Int): Boolean {
+        if (itemPosition != RecyclerView.NO_POSITION) {
+            val model = epoxyController.adapter.getModelAtPosition(itemPosition)
+            return model.javaClass == headerClass
+        }
+        return false
     }
 
     private fun moveHeader(c: Canvas, currentHeader: View, nextHeader: View) {
