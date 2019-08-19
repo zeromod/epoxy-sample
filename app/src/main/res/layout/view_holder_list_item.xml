@@ -7,6 +7,10 @@
         <variable
             name="text"
             type="String" />
+
+        <variable
+            name="viewModel"
+            type="in.co.logicsoft.epoxysample.ui.MainViewModel" />
     </data>
 
     <LinearLayout
@@ -17,6 +21,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="@{() -> viewModel.clickEvent(text)}"
             android:padding="8dp"
             android:text="@{text}"
             tools:text="Sample text" />
