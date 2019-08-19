@@ -37,8 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun subscribeUI() {
         viewModel.item.observe(this, Observer {
-            val list = listOf(1, it, 2, it)
-            controller.setData(list)
+            controller.setData(it, listOf("Header 1", "Header 2"))
         })
 
         viewModel.toastMessage.observe(this, Observer {
