@@ -1,9 +1,8 @@
 package `in`.co.logicsoft.epoxysample.ui
 
-import `in`.co.logicsoft.epoxysample.ListHeaderBindingModel_
 import `in`.co.logicsoft.epoxysample.R
-import `in`.co.logicsoft.epoxysample.StickyHeaderItemDecoration
 import `in`.co.logicsoft.epoxysample.epoxy.SampleController
+import `in`.co.logicsoft.epoxysample.util.StickyHeaders
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -33,20 +32,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecycler() {
         sample_list.adapter = controller.adapter
-        sample_list.addItemDecoration(
-            StickyHeaderItemDecoration(
-                controller,
-                listOf(
-                    ListHeaderBindingModel_().id("Header 1").id(),
-                    ListHeaderBindingModel_().id("Header 2").id()
-                )
-            )
-        )
+        sample_list.addItemDecoration(StickyHeaders(controller))
     }
 
     private fun subscribeUI() {
         viewModel.item.observe(this, Observer {
-            controller.setData(it)
+            val list = listOf(1, it, 2, it)
+            controller.setData(list)
         })
 
         viewModel.toastMessage.observe(this, Observer {
