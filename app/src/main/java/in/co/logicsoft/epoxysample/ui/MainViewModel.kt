@@ -37,7 +37,7 @@ class MainViewModel : ViewModel() {
             "Nineteen",
             "Twenty"
         )
-        _header.value = listOf("Header 1", "Header 2")
+        _header.value = listOf("Header 1", "Header 2", "Header 3", "Header 4")
     }
 
     fun clickEvent(value: String) {

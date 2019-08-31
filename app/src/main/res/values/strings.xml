@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Epoxy Sample</string>
+    <string name="mobile">mobile</string>
 </resources>
